@@ -1,4 +1,4 @@
-const { capitalize, reverseString, calculator } = require('./more');
+const { capitalize, reverseString, calculator, caesarCipher } = require('./more');
 
 test("Capitalize function capitalizes first word", () => {
     expect(capitalize("crazy")).toBe("Crazy")
@@ -52,4 +52,15 @@ test("Calculator rejects non numbers", () => {
     expect(() => calculator.subtract()).toThrow(TypeError);
     expect(() => calculator.multiply("1", "3")).toThrow(TypeError);
     expect(() => calculator.divide("4")).toThrow(TypeError);
+})
+
+test("Caesar Cipher shifts properly and throws type errors", () => {
+    const s = "attack at dawn"
+    expect(() => caesarCipher(s, 1.2)).toThrow(TypeError)
+    expect(() => caesarCipher(s, "1")).toThrow(TypeError)
+    expect(() => caesarCipher(s, "a")).toThrow(TypeError)
+    expect(() => caesarCipher(1, 1)).toThrow(TypeError)
+    expect(caesarCipher(s, 1)).toBe("buubdl bu ebxo")
+    expect(caesarCipher(s, 10)).toBe("kddkmu kd nkgx");
+    expect(caesarCipher(s, 25)).toBe("zsszbj zs czvm")
 })

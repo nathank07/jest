@@ -41,4 +41,25 @@ const calculator = {
     },
 }
 
-module.exports = { capitalize, reverseString, calculator };
+function caesarCipher(string, shiftValue){
+    if(typeof string !== "string"){
+        throw new TypeError('First argument must be a string')
+    }
+    if(!Number.isInteger(shiftValue)){
+        throw new TypeError('Second argument must be an integer')
+    }
+    const charArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    
+    let convertedString = string.split("").map(char => {
+        let charLoc = charArr.indexOf(char);
+        if(charLoc === -1) { return char }
+        charLoc += shiftValue;
+        while(charLoc > 26){
+            charLoc -= 26;
+        }
+        return charArr[charLoc];
+    })
+    return convertedString.reduce((prev, curr) => prev += curr)
+}
+
+module.exports = { capitalize, reverseString, calculator, caesarCipher };
