@@ -15,6 +15,6 @@ test("reverseString function reverses string", () => {
 })
 
 test("reverseString function rejects non string", () => {
- //   expect(() => reverseString(123)).toThrow(TypeError);
- //   expect(() => reverseString()).toThrow(TypeError);
+    expect(() => reverseString(123)).toThrow(TypeError);
+    expect(() => reverseString()).toThrow(TypeError);
 })
