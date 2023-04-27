@@ -1,4 +1,4 @@
-const { capitalize, reverseString, calculator, caesarCipher } = require('./more');
+const { capitalize, reverseString, calculator, caesarCipher, analyzeArray } = require('./more');
 
 test("Capitalize function capitalizes first word", () => {
     expect(capitalize("crazy")).toBe("Crazy")
@@ -63,4 +63,16 @@ test("Caesar Cipher shifts properly and throws type errors", () => {
     expect(caesarCipher(s, 1)).toBe("buubdl bu ebxo")
     expect(caesarCipher(s, 10)).toBe("kddkmu kd nkgx");
     expect(caesarCipher(s, 25)).toBe("zsszbj zs czvm")
+})
+test("Analyze Numbers Array Rejects Non Numbers", () => {
+    expect(() => analyzeArray([1,"2",3,"a"])).toThrow(TypeError);
+})
+test("Analyze Numbers Array", () => {
+    expect(analyzeArray([1,8,3,4,2,6])).toStrictEqual(
+    {
+        average: 4,
+        min: 1,
+        max: 8,
+        length: 6
+    });
 })
