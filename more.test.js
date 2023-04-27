@@ -64,6 +64,12 @@ test("Caesar Cipher shifts properly and throws type errors", () => {
     expect(caesarCipher(s, 10)).toBe("kddkmu kd nkgx");
     expect(caesarCipher(s, 25)).toBe("zsszbj zs czvm")
 })
+
+test("Caesar Cipher handles punctuation and capitalization", () => {
+    const s = "Attack at dawn!"
+    expect(caesarCipher(s, 25)).toBe("Zsszbj zs czvm!")
+})
+
 test("Analyze Numbers Array Rejects Non Numbers", () => {
     expect(() => analyzeArray([1,"2",3,"a"])).toThrow(TypeError);
 })

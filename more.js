@@ -51,13 +51,14 @@ function caesarCipher(string, shiftValue){
     const charArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     
     let convertedString = string.split("").map(char => {
-        let charLoc = charArr.indexOf(char);
+        const upperCase = /^[A-Z]*$/.test(char);
+        let charLoc = charArr.indexOf(char.toLowerCase());
         if(charLoc === -1) { return char }
         charLoc += shiftValue;
         while(charLoc > 26){
             charLoc -= 26;
         }
-        return charArr[charLoc];
+        return upperCase ? charArr[charLoc].toUpperCase() : charArr[charLoc];
     })
     return convertedString.reduce((prev, curr) => prev += curr)
 }
